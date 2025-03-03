@@ -1,0 +1,27 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer base {
+    p,
+    .p {
+        @apply mb-8 text-2xl drop-shadow-lg leading-10;
+    }
+
+    code {
+        @apply py-[.1rem] px-[.175rem] font-mono text-pink-500 bg-gray-300 select-all break-words before:content-['<'] after:content-['>'];
+    }
+
+}
+
+@theme {
+    --animate-wiggle: wiggle 1s ease-in-out infinite;
+    @keyframes wiggle {
+        0%,
+        100% {
+            transform: rotate(-3deg);
+        }
+        50% {
+            transform: rotate(3deg);
+        }
+    }
+}

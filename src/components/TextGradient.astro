@@ -1,0 +1,19 @@
+---
+const gradients = {
+    'blue': 'from-cyan-700 to-indigo-700',
+    'purple': 'from-purple-500 to-purple-900',
+    'orange': 'from-orange-700 to-yellow-600',
+    'red': 'from-rose-600 to-orange-600',
+    'yellow': 'from-green-700 to-emerald-700'
+};
+
+type Props = {
+    c: keyof typeof gradients;
+};
+
+const { c } = Astro.props;
+---
+<strong class:list={[
+    'bg-gradient-to-b bg-clip-text text-transparent drop-shadow-sm',
+    gradients[c],
+]}><slot /></strong>

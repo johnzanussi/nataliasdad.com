@@ -1,0 +1,11 @@
+---
+const { tip } = Astro.props;
+---
+<div class="tooltip tooltip-open tooltip-primary">
+    <slot />
+    <div class="tooltip-content shadow-xl">
+        <div class="animate-wiggle text-slate-200 rotate-5 text-lg font-semibold">
+            {tip}
+        </div>
+    </div>
+</div>

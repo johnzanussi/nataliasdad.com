@@ -1,11 +1,70 @@
 ---
-import Welcome from '../components/Welcome.astro';
 import Layout from '../layouts/Layout.astro';
+import Bio from '../components/Bio.astro';
+import Tooltip from '../components/Tooltip.astro';
+import E from '../components/Emoji.astro';
+import Gradient from '../components/TextGradient.astro';
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import students from '../data/students.json';
+const showStudents = false;
+// const showStudents = true;
 ---
 
 <Layout>
-	<Welcome />
+
+	<div class="md:max-w-150 mx-auto text-center py-20 px-5">
+
+		<div class="p text-3xl/11 md:text-4xl/11">
+			Natalia's <Tooltip tip="John 👋">dad</Tooltip> is a <Gradient c="blue">Software Engineering Manager</Gradient>
+		</div>
+
+		<p class="text-9xl/32">👨🏻‍💻</p>
+
+		<p>
+			In his job, he writes <code>code</code> and helps others who write code create websites<E>📱</E>.
+		</p>
+
+		<p>
+			On <E>🗓️</E> March 6th, 2025, Natalia's dad gave a presentation to <E>👩🏻‍🏫</E>&nbsp;Mrs.&nbsp;Caracciola's second-grade class about being a Software Engineer.
+		</p>
+
+		<p>
+			After learning about his job, each student shared their favorite <E>🎨</E>&nbsp;<Gradient c="purple">color</Gradient>, <E>😎</E>&nbsp;<Gradient c="orange">emoji</Gradient>, and <E>📚</E>&nbsp;<Gradient c="red">school&nbsp;subject</Gradient>.</p>
+		</p>
+
+		<p>
+			Together, they used that information to write code that created what you see below.
+		</p>
+
+		<div class="flex items-center flex-col">
+
+			<Bio
+				name="John"
+				emoji="😎"
+				color="black"
+				fav="Math"
+			/>
+
+			<Bio
+				name="Natalia"
+				emoji="💩"
+				color="pink"
+				fav="History"
+			/>
+
+			{showStudents && students.map(({ name, emoji, fav, color }) => {
+				return (
+					<Bio
+						name={name}
+						emoji={emoji}
+						fav={fav}
+						color={color}
+					/>
+				);
+			})}
+
+		</div>
+
+	</div>
+
 </Layout>

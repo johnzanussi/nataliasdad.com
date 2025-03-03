@@ -1,0 +1,26 @@
+---
+import Layout from "./BaseLayout.astro";
+import "reveal.js/dist/reveal.css";
+import "reveal.js/dist/theme/black.css";
+
+// import './src/styles/global.css';
+// https://fonts.google.com/selection/embed
+---
+
+<Layout>
+  <Fragment slot="head">
+  </Fragment>
+  <div class="reveal">
+    <div class="slides">
+      <slot />
+    </div>
+  </div>
+  <script >
+    import Reveal from "reveal.js";
+
+    let deck = new Reveal({
+      plugins: [],
+    });
+    deck.initialize();
+  </script>
+</Layout>
