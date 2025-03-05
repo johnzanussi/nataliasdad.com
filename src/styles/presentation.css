@@ -1,0 +1,35 @@
+@import "tailwindcss";
+@plugin "daisyui";
+
+@layer components {
+    .present {
+        @apply drop-shadow-lg;
+
+        ul:not(ul *) > li {
+            @apply mb-4;
+        }
+    }
+
+    .fragment.slide-right {
+
+        @apply flex flex-col items-center;
+
+        h1, p {
+            @apply block w-fit;
+        }
+
+    }
+
+    .fragment.slide-right:not(.current-fragment) {
+        @apply items-start;
+
+    }
+    .fragment.fade-in {
+        display: none;
+    }
+
+    .fragment.fade-in.current-fragment {
+        display: block;
+        float: right;
+    }
+}

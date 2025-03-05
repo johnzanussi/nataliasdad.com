@@ -1,11 +1,29 @@
 ---
-const { tip } = Astro.props;
+type Props = {
+    tip: string;
+    tipClass?: string;
+    wiggle?: boolean;
+};
+
+const {
+    tip,
+    wiggle = false,
+} = Astro.props;
 ---
 <div class="tooltip tooltip-open tooltip-primary">
     <slot />
+
     <div class="tooltip-content shadow-xl">
-        <div class="animate-wiggle text-slate-200 rotate-5 text-lg font-semibold">
+
+        <div class:list={[
+            'text-slate-200 text-lg font-semibold',
+            {
+                'animate-wiggle rotate-5': wiggle,
+            },
+        ]}>
             {tip}
         </div>
+
     </div>
+
 </div>

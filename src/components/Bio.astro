@@ -12,6 +12,8 @@ const {
     color,
     fav,
 } = Astro.props;
+
+const favLabel = 'animal';
 ---
 <div
     class:list={[
@@ -22,10 +24,12 @@ const {
         'rounded-full shadow-2xl',
         'before:absolute before:inset-0 before:rounded-full before:shadow-[0.2rem_0.2rem_var(--color-black)]',
         'ring-2',
+        'cursor-pointer select-none active:scale-90 transition',
     ]}
     style={{
         '--color': color,
     }}
+    data-confetti={emoji}
 >
 
     <span class="absolute text-[110px]/[110px] md:text-[150px]/[150px] drop-shadow-md xanimate-wiggle">
@@ -33,7 +37,7 @@ const {
     </span>
 
     <div class="px-5 text-(--color) invert text-sm md:text-xl drop-shadow-md">
-        <strong>{name}</strong>'s favorite subject is <strong>{fav}</strong>.
+        <strong>{name}</strong>'s favorite {favLabel} is a <strong>{fav}</strong>.
     </div>
 
 </div>

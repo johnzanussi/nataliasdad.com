@@ -6,65 +6,90 @@ import E from '@/components/Emoji.astro';
 import Gradient from '@/components/TextGradient.astro';
 
 import students from '@/data/students.json';
+
+import '@/styles/index.css';
+
+const fav = {
+	label: 'animal',
+	emoji: '🐒',
+};
 const showStudents = false;
 // const showStudents = true;
 ---
 
-<Layout>
+<Layout
+	bgProps={{
+		class: 'bg-gradient-to-bl from-emerald-400 to-cyan-400 text-black bg-fixed',
+	}}
+>
 
-	<div class="md:max-w-150 mx-auto text-center py-20 px-5">
+	<div class="text-center py-20 px-5">
 
-		<div class="p text-3xl/11 md:text-4xl/11">
-			Natalia's <Tooltip tip="John 👋">dad</Tooltip> is a <Gradient c="blue">Software Engineering Manager</Gradient>
+		<div class="p text-4xl/11 md:text-6xl/19 max-w-200 mx-auto">
+			Natalia's <Tooltip tip="John 👋" wiggle>dad</Tooltip> is a <br /><Gradient c="blue">Software Engineering Manager</Gradient>
 		</div>
 
-		<p class="text-9xl/32">👨🏻‍💻</p>
+		<div class="md:max-w-150 mx-auto">
 
-		<p>
-			In his job, he writes <code>code</code> and helps others who write code create websites<E>📱</E>.
-		</p>
+			<p class="text-[150px]/40 scale-90">
+				👨🏻‍💻
+			</p>
 
-		<p>
-			On <E>🗓️</E> March 6th, 2025, Natalia's dad gave a presentation to <E>👩🏻‍🏫</E>&nbsp;Mrs.&nbsp;Caracciola's second-grade class about being a Software Engineer.
-		</p>
+			<p>
+				In his job, he writes <code>code</code> and helps others who write code create websites<E>📱</E>.
+			</p>
 
-		<p>
-			After learning about his job, each student shared their favorite <E>🎨</E>&nbsp;<Gradient c="purple">color</Gradient>, <E>😎</E>&nbsp;<Gradient c="orange">emoji</Gradient>, and <E>📚</E>&nbsp;<Gradient c="red">school&nbsp;subject</Gradient>.</p>
-		</p>
+			<p>
+				On <E>🗓️</E> March 6th, 2025, Natalia's dad gave a presentation to <E>👩🏻‍🏫</E>&nbsp;Mrs.&nbsp;Caracciola's second-grade class about being a Software Engineer.
+			</p>
 
-		<p>
-			Together, they used that information to write code that created what you see below.
-		</p>
+			<p>You can view the presentation <a href="/presentation">by clicking here</a>.</p>
 
-		<div class="flex items-center flex-col">
+			<p>
+				After learning about his job, each student shared their favorite <E>🎨</E>&nbsp;<Gradient c="purple">color</Gradient>, <E>😎</E>&nbsp;<Gradient c="orange">emoji</Gradient>, and <E>{fav.emoji}</E>&nbsp;<Gradient c="red">{fav.label}</Gradient>.</p>
+			</p>
 
-			<Bio
-				name="John"
-				emoji="😎"
-				color="black"
-				fav="Math"
-			/>
+			<p>
+				Together, they used that information to write code that created what you see below.
+			</p>
 
-			<Bio
-				name="Natalia"
-				emoji="💩"
-				color="pink"
-				fav="History"
-			/>
+			<div class="flex items-center flex-col">
 
-			{showStudents && students.map(({ name, emoji, fav, color }) => {
-				return (
-					<Bio
-						name={name}
-						emoji={emoji}
-						fav={fav}
-						color={color}
-					/>
-				);
-			})}
+				<Bio
+					name="John"
+					emoji="😎"
+					color="black"
+					fav="dolphin"
+				/>
+
+				<Bio
+					name="Natalia"
+					emoji="💩"
+					color="pink"
+					fav="monkey"
+				/>
+
+				{showStudents && students.map(({ name, emoji, fav, color }) => {
+					return (
+						<Bio
+							name={name}
+							emoji={emoji}
+							fav={fav}
+							color={color}
+						/>
+					);
+				})}
+
+			</div>
+
+			<p class="text-sm font-medium mt-20">
+				If you're into this sort of thing you can view all the code for this website on <a href="https://github.com/johnzanussi/nataliasdad.com">GitHub.com</a>.
+			</p>
 
 		</div>
 
 	</div>
+
+	<script src="@/scripts/confetti.ts" />
 
 </Layout>

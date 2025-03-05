@@ -1,17 +1,40 @@
 ---
-import '@/styles/index.css';
-// https://www.creative-tim.com/twcomponents/gradient-generator
+import type { HTMLAttributes } from 'astro/types';
+
+type Props = {
+	title?: string;
+	bgProps?: HTMLAttributes<'body'>;
+};
+
+const BASE_TITLE = 'Natalia\'s Dad';
+
+// import '@/styles/index.css';
+import imgCover from '@/assets/website-nataliasdad.png';
+
+const { title, bgProps } = Astro.props;
+
+const pageTitle = title ? `${title} - ${BASE_TITLE}` : BASE_TITLE;
 ---
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark scheme-dark">
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
 		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 		<meta name="generator" content={Astro.generator} />
-		<title>Natalia's Dad</title>
+		<title>{pageTitle}</title>
+		<meta property="og:title" content="Natalia's Dad">
+		<meta property="og:site_name" content="Natalia's Dad">
+		<meta property="og:url" content="nataliasdad.com">
+		<meta property="og:description" content="">
+		<meta property="og:type" content=website>
+		<meta property="og:image" content={imgCover.src}>
+		<link rel="apple-touch-icon" sizes="180x180" href="/icons/apple-touch-icon.png">
+		<link rel="icon" type="image/png" sizes="32x32" href="/icons/favicon-32x32.png">
+		<link rel="icon" type="image/png" sizes="16x16" href="/icons/favicon-16x16.png">
+		<link rel="manifest" href="/site.webmanifest">
 	</head>
-	<body class="bg-gradient-to-bl from-emerald-400 to-cyan-400 text-black">
+	<body {...bgProps }>
 		<slot />
 	</body>
 </html>

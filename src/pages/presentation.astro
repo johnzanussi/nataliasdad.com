@@ -1,7 +1,10 @@
 ---
-import Slides from '../layouts/Slides.astro';
-/*
+// import { Image } from 'astro:assets';
+import Image from '@/components/Image.astro';
+import Gradient from '@/components/TextGradient.astro';
+import PresentationLayout from '@/layouts/PresentationLayout.astro';
 
+/*
 
 What I do
 What is code?
@@ -11,49 +14,351 @@ How websites work
 - Ask for other website and view that source code
 Hand out paper with questions
 Hand out paper with website
-
-
-
 */
 
 // https://revealjs.com/markup/
+
+import '@/styles/presentation.css';
+
+import imgJohn from '@/assets/img-john-natalia.jpg';
+import imgPumpkin from '@/assets/minions-pumpkin.png';
+import imgNatalia from '@/assets/img-natalia-typing.jpg';
+import imgDogGif from '@/assets/gif-dog-typing.gif';
+import imgScreenshot from '@/assets/screenshot-nataliasdad.png';
 ---
 
-<Slides>
+<PresentationLayout>
 
-    <section
-        data-state="bg-gradient-to-r from-pink-500 to-yellow-500"
-        data-transition="slide"
-    >
+    <section xdata-background-gradient="linear-gradient(to bottom right, #1e3a8a, #1e1a78, #4c0d2e)">
 
-        <h1 class="text-9xl text-slate-800 drop-shadow-lg mb-20">
-            Hi class! <span class="animate-wiggle">👋</span>
+        <h1 class="!normal-case">
+            <Gradient c="green">Hi class!</Gradient> 👋
         </h1>
 
-        <p class="drop-shadow-lg text-3xl">
-            I'm Natalia's Dad.
+        <p>
+            I'm Natalia's Dad
         </p>
 
     </section>
 
-    <section
-        data-state="bg-gradient-to-r from-pink-500 to-yellow-500"
-        data-transition="slide"
-    >
-        <h2>My job is a Software Engineering Manager</h2>
+    <section xdata-background-gradient="linear-gradient(to bottom right, #1e3a8a, #1e1a78, #4c0d2e)">
 
-        <p>Does anybody know what that software engineering is?</p>
-    </section>
+        <p>
+            My name is <span class="text-teal-500 font-bold">John</span>
+        </p>
 
-    <section
-        data-state="bg-gradient-to-r from-pink-500 to-yellow-500"
-        data-transition="slide"
-    >
-
-        <h1>My job is a Software Engineering Manager</h1>
-
-        <p>Does anybody know what that software engineering is?</p>
+        <p>
+            <Image
+                src={imgJohn}
+                alt="John"
+                width="400"
+            />
+        </p>
 
     </section>
 
-</Slides>
+    <section>
+
+        <p class="text-gray-400 text-3xl">
+            My job is a
+        </p>
+
+        <h2 class="r-fit-text !normal-case">
+            <Gradient c="bluegreen">
+                Software Engineering Manager
+            </Gradient>
+        </h2>
+
+    </section>
+
+    <section>
+
+        <dl>
+
+            <dt class="text-7xl">
+                <Gradient c="bluegreen">
+                    Software
+                </Gradient>
+            </dt>
+
+            <dd>
+                A set of instructions that a person gives a computer to tell it what to do.
+            </dd>
+
+            <dt class="text-7xl mt-7">
+                <Gradient c="bluegreen">
+                    Engineering
+                </Gradient>
+            </dt>
+
+            <dd>
+                The practice of solving problems with technology.
+            </dd>
+
+            <dt class="text-7xl mt-7">
+                <Gradient c="bluegreen">
+                    Manager
+                </Gradient>
+            </dt>
+
+            <dd>
+                Someone who helps people do their job and find ways to keep them learning new things.
+            </dd>
+
+        </dl>
+
+    </section>
+
+    <section>
+
+        <p>
+            <Gradient c="bluegreen">Software Engineering Managers</Gradient> write <span class="py-[.1rem] px-[.175rem] font-mono text-pink-500 bg-gray-300">&lt;code&gt;</span> and help others who write code create <Gradient c="red">websites</Gradient> and <Gradient c="orange">apps</Gradient> for <Gradient c="purple">computers</Gradient>, <Gradient c="blue">phones</Gradient>, and <Gradient c="yellow">tablets</Gradient>.
+        </p>
+
+    </section>
+
+    <section>
+        <h1>What is code?</h1>
+    </section>
+
+    <section>
+
+        <ul class="text-3xl">
+            <li>
+                Code is a way to tell computers how to do something in a language they understand
+            </li>
+            <li>
+                It's not too different from speaking a language other than English
+            </li>
+            <li>
+                There are a lot of coding languages you can learn. Some of them are:
+                <ul>
+                    <li>JavaScript</li>
+                    <li>Python</li>
+                    <li>C++</li>
+                    <li>Rust</li>
+                    <li>Go</li>
+                    <li>HTML/CSS</li>
+                </ul>
+            </li>
+            <li>
+                <Gradient c="bluegreen">Software Engineers</Gradient> type the code into a computer and it understands what to do and how to make things work and look.
+            </li>
+        </ul>
+
+    </section>
+
+    <section>
+
+        <div class="flex gap-5 justify-between items-center">
+
+            <div class="text-left">
+
+                <h3 class="!normal-case !text-3xl">
+                    How to become a <Gradient c="bluegreen">Software Engineer</Gradient>?
+                </h3>
+
+                <ul class="text-2xl">
+                    <li>Learn to <Gradient c="pink">use computers</Gradinet> at school or at home</li>
+                    <li>Ask your <Gradient c="green">STEM</Gradinet> teacher about coding</li>
+                    <li>Play <Gradient c="red">coding games</Gradient> at home like <a href="https://scratch.mit.edu/" target="_blank">Scratch</a></li>
+                    <li>Practice solving problems and being creative</li>
+                    <li>Study <Gradient c="yellow">Math</Gradient> and <Gradient c="yellow">Science</Gradient></li>
+                </ul>
+            </div>
+
+            <Image
+                src={imgNatalia}
+                alt="Natalia"
+                width="400"
+                class="!m-0"
+            />
+
+        </div>
+
+    </section>
+
+    <section>
+
+        <div class="flex gap-5 justify-between items-center">
+
+            <div class="text-left">
+
+                <h3 class="!normal-case !text-4xl">
+                    Why do I love my job?
+                </h3>
+
+                <ul class="text-2xl">
+                    <li>I get to be <Gradient c="red">creative</Gradient> every day</li>
+                    <li>I'm always learning <Gradient c="blue">something new</Gradient></li>
+                    <li>I <Gradient c="green">solve problems</Gradient></li>
+                    <li>I <Gradient c="pink">make things</Gradient> that people use</li>
+                    <li>I can use what I learn at work for <Gradient c="yellow">fun stuff</Gradinet> at home</li>
+                </ul>
+            </div>
+
+            <img src={imgDogGif.src} width="450" class="rounded-lg shadow-lg" />
+
+        </div>
+
+    </section>
+
+    <section>
+        <h1 class="!mb-0">
+            Remember this?
+        </h1>
+        <Image
+            src={imgPumpkin}
+            alt="pumpkin"
+            class="!mt-0"
+            />
+    </section>
+
+    <section>
+
+        <p>
+            I did that by writing code and running it on a small computer with a small screen
+        </p>
+
+        <pre><code>import pygame
+from PIL import Image
+import random
+import os
+
+# Initialize pygame for display and graphics handling
+pygame.init()
+
+# Set up a 480x480 window for displaying GIFs
+screen = pygame.display.set_mode((480, 480))
+
+# List of GIF files with their respective weights for random selection
+gif_files = [
+    ("blink.gif", 3),  # More likely to be chosen (weight 3)
+    ("look-left.gif", 1),
+    ("look-right.gif", 1),
+]
+
+# Function to load and process a GIF file into pygame-compatible frames
+def load_gif(gif_path):
+    gif = Image.open(gif_path)  # Open the GIF file
+    frames = []  # List to store individual frames
+    frame_durations = []  # List to store frame durations
+
+    # Extract and process each frame
+    for frame in range(0, gif.n_frames):
+        gif.seek(frame)  # Go to the specific frame
+        frame_image = gif.convert("RGBA")  # Convert to RGBA for pygame compatibility
+
+        # Rotate the frame 90 degrees counterclockwise
+        rotated_frame = frame_image.rotate(90, expand=True)
+
+        # Convert the frame to a pygame image
+        mode = rotated_frame.mode
+        size = rotated_frame.size
+        data = rotated_frame.tobytes()
+        py_image = pygame.image.fromstring(data, size, mode)
+
+        # Append frame and its duration
+        frames.append(py_image)
+        duration = gif.info.get("duration", 100) / 1000.0  # Duration in seconds
+        frame_durations.append(duration)
+
+    return frames, frame_durations
+
+# Function to play a GIF frame-by-frame on the pygame display
+def play_gif(frames, frame_durations):
+    current_frame = 0  # Start with the first frame
+    last_update_time = pygame.time.get_ticks()  # Time tracking for frame updates
+
+    while current_frame &lt; len(frames):
+        # Handle user events (e.g., quit or escape key)
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                return False
+            elif event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_ESCAPE:
+                    return False
+
+        now = pygame.time.get_ticks()
+
+        # Check if it's time to update the frame
+        if now - last_update_time &gt; frame_durations[current_frame] * 1000:
+            current_frame += 1
+            last_update_time = now
+
+        if current_frame &lt; len(frames):
+            # Center the frame on the screen and display it
+            frame_rect = frames[current_frame].get_rect(center=(235, 245))
+            screen.blit(frames[current_frame], frame_rect)
+            pygame.display.flip()
+
+        clock.tick(60)  # Limit the loop to 60 frames per second
+
+    return True
+
+# Main loop that handles GIF playback
+running = True
+clock = pygame.time.Clock()  # Clock to control frame rate
+
+try:
+    while running:
+
+        # Randomly select a GIF file based on weights
+        current_gif, _ = random.choices(gif_files, weights=[w for _, w in gif_files], k=1)[0]
+        gif_path = os.path.join("/home/pi", current_gif)  # Path to the selected GIF
+
+        # Load and play the selected GIF
+        frames, frame_durations = load_gif(gif_path)
+        running = play_gif(frames, frame_durations)
+
+except KeyboardInterrupt:
+    # Graceful exit on manual interruption
+    print("Program interrupted")
+
+finally:
+    pygame.quit()</code></pre>
+
+    </section>
+
+    <section>
+        <ul class="text-left">
+
+            <h2>How to build a website</h2>
+
+            <li>
+                <Gradient c="orange"><strong>HTML</strong></Gradient> - The building blocks (like digital LEGO pieces)
+            </li>
+            <li>
+                <Gradient c="purple"><strong>CSS</strong></Gradient> - The colors and decorations (makes things pretty!)
+            </li>
+            <li>
+                <Gradient c="yellow"><strong>JavaScript</strong></Gradient> - The magic that makes things move and work
+            </li>
+        </ul>
+    </section>
+
+    <section>
+
+        Let's build a website together!
+
+        <a href="/">
+            <Image
+                src={imgScreenshot}
+                includeShadow={false}
+                alt="NataliasDad.com"
+                width="800"
+            />
+        </a>
+
+    </section>
+
+    <section>
+
+        <h1 class="!normal-case">
+            But, first...<br />any questions?
+        </h1>
+
+    </section>
+
+
+</PresentationLayout>

@@ -1,0 +1,34 @@
+---
+import { Image as AstroImage, type ImgAttributes } from 'astro:assets';
+
+interface Props extends ImgAttributes {
+    width: number;
+    includeShadow?: boolean;
+};
+
+const {
+    width,
+    class: className = '',
+    includeShadow = true,
+    ...props
+} = Astro.props;
+
+const imgProps = {
+    style: {
+        '--img-width': `${width}px`,
+    },
+    ...props,
+};
+---
+
+<AstroImage
+    loading="lazy"
+    class:list={[
+        'inline-block w-(--img-width)',
+        {
+            'rounded-lg shadow-lg': includeShadow,
+        },
+        className,
+    ]}
+    {...imgProps}
+/>

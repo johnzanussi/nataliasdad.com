@@ -1,7 +1,26 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@property --offset {
+    syntax: '<length>';
+    inherits: false;
+    initial-value: 3px;
+}
+
 @layer base {
+
+    a {
+        @apply underline decoration-dashed decoration-indigo-700 underline-offset-(--offset) break-words text-indigo-700;
+
+        transition: --offset 250ms;
+        text-decoration-skip-ink: none;
+
+        &:hover {
+            --offset: .35em;
+        }
+
+    }
+
     p,
     .p {
         @apply mb-8 text-2xl drop-shadow-lg leading-10;
@@ -14,7 +33,9 @@
 }
 
 @theme {
+
     --animate-wiggle: wiggle 1s ease-in-out infinite;
+
     @keyframes wiggle {
         0%,
         100% {
@@ -24,4 +45,5 @@
             transform: rotate(3deg);
         }
     }
+
 }
