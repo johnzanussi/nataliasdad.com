@@ -1,22 +1,10 @@
 ---
-// import { Image } from 'astro:assets';
 import Image from '@/components/Image.astro';
 import Gradient from '@/components/TextGradient.astro';
 import PresentationLayout from '@/layouts/PresentationLayout.astro';
-
-/*
-
-What I do
-What is code?
-How I got here
-How websites work
-- view source code of YouTube
-- Ask for other website and view that source code
-Hand out paper with questions
-Hand out paper with website
-*/
-
-// https://revealjs.com/markup/
+import MinionCode from '@/components/MinionCode.astro';
+import SlideColumns from '@/components/SlideColumns.astro';
+import Code from '@/components/Code.astro';
 
 import '@/styles/presentation.css';
 
@@ -25,6 +13,29 @@ import imgPumpkin from '@/assets/minions-pumpkin.png';
 import imgNatalia from '@/assets/img-natalia-typing.jpg';
 import imgDogGif from '@/assets/gif-dog-typing.gif';
 import imgScreenshot from '@/assets/screenshot-nataliasdad.png';
+import imgRpi from '@/assets/electronic-connections.jpg';
+
+const code = `<h4 class="font-bold text-white" id="title">
+    Most websites are built with
+</h4>
+
+<style>
+.font-bold {
+    font-weight: bold;
+}
+.text-white {
+    color: white;
+}
+</style>
+
+<script>
+document
+    .getElementById('title')
+    .addEventListener('click', (e) => {
+        e.target.style.color = randomColor();
+        e.target.classList.add('animate-wiggle');
+    });
+</script>`;
 ---
 
 <PresentationLayout>
@@ -112,7 +123,7 @@ import imgScreenshot from '@/assets/screenshot-nataliasdad.png';
     <section>
 
         <p>
-            <Gradient c="bluegreen">Software Engineering Managers</Gradient> write <span class="py-[.1rem] px-[.175rem] font-mono text-pink-500 bg-gray-300">&lt;code&gt;</span> and help others who write code create <Gradient c="red">websites</Gradient> and <Gradient c="orange">apps</Gradient> for <Gradient c="purple">computers</Gradient>, <Gradient c="blue">phones</Gradient>, and <Gradient c="yellow">tablets</Gradient>.
+            <Gradient c="bluegreen">Software Engineering Managers</Gradient> write <Code /> and help others who write code create <Gradient c="red">websites</Gradient> and <Gradient c="orange">apps</Gradient> for <Gradient c="purple">computers</Gradient>, <Gradient c="blue">phones</Gradient>, and <Gradient c="yellow">tablets</Gradient>.
         </p>
 
     </section>
@@ -150,37 +161,9 @@ import imgScreenshot from '@/assets/screenshot-nataliasdad.png';
 
     <section>
 
-        <div class="flex gap-5 justify-between items-center">
+        <SlideColumns>
 
-            <div class="text-left">
-
-                <h3 class="!normal-case !text-3xl">
-                    How to become a <Gradient c="bluegreen">Software Engineer</Gradient>?
-                </h3>
-
-                <ul class="text-2xl">
-                    <li>Learn to <Gradient c="pink">use computers</Gradinet> at school or at home</li>
-                    <li>Ask your <Gradient c="green">STEM</Gradinet> teacher about coding</li>
-                    <li>Play <Gradient c="red">coding games</Gradient> at home like <a href="https://scratch.mit.edu/" target="_blank">Scratch</a></li>
-                    <li>Practice solving problems and being creative</li>
-                    <li>Study <Gradient c="yellow">Math</Gradient> and <Gradient c="yellow">Science</Gradient></li>
-                </ul>
-            </div>
-
-            <Image
-                src={imgNatalia}
-                alt="Natalia"
-                width="400"
-                class="!m-0"
-            />
-
-        </div>
-
-    </section>
-
-    <section>
-
-        <div class="flex gap-5 justify-between items-center">
+            <img src={imgDogGif.src} width="450" class="rounded-lg shadow-lg" />
 
             <div class="text-left">
 
@@ -193,148 +176,162 @@ import imgScreenshot from '@/assets/screenshot-nataliasdad.png';
                     <li>I'm always learning <Gradient c="blue">something new</Gradient></li>
                     <li>I <Gradient c="green">solve problems</Gradient></li>
                     <li>I <Gradient c="pink">make things</Gradient> that people use</li>
-                    <li>I can use what I learn at work for <Gradient c="yellow">fun stuff</Gradinet> at home</li>
+                    <li>I can use what I learn at work for <Gradient c="yellow">fun stuff</Gradinet> at home. Like....</li>
                 </ul>
             </div>
 
-            <img src={imgDogGif.src} width="450" class="rounded-lg shadow-lg" />
 
-        </div>
+
+        </SlideColumns>
 
     </section>
 
     <section>
+
         <h1 class="!mb-0">
-            Remember this?
+            Remember this? 🎃
         </h1>
+
         <Image
             src={imgPumpkin}
             alt="pumpkin"
             class="!mt-0"
-            />
+        />
+
     </section>
 
     <section>
 
-        <p>
-            I did that by writing code and running it on a small computer with a small screen
+        <p class="text-4xl">
+            I did that by writing <Code /> and running it on a small computer called a <Gradient c="red">Raspberry Pi</Gradient> with a small round screen
         </p>
 
-        <pre><code>import pygame
-from PIL import Image
-import random
-import os
+        <SlideColumns>
 
-# Initialize pygame for display and graphics handling
-pygame.init()
+            <pre class="sm:!w-1/2 !text-xs/normal">
+                <MinionCode />
+            </pre>
 
-# Set up a 480x480 window for displaying GIFs
-screen = pygame.display.set_mode((480, 480))
+            <Image
+                src={imgRpi}
+                alt="Raspberry Pi"
+                width="450"
+                hideShadow
+                class="sm:object-contain"
+            />
 
-# List of GIF files with their respective weights for random selection
-gif_files = [
-    ("blink.gif", 3),  # More likely to be chosen (weight 3)
-    ("look-left.gif", 1),
-    ("look-right.gif", 1),
-]
-
-# Function to load and process a GIF file into pygame-compatible frames
-def load_gif(gif_path):
-    gif = Image.open(gif_path)  # Open the GIF file
-    frames = []  # List to store individual frames
-    frame_durations = []  # List to store frame durations
-
-    # Extract and process each frame
-    for frame in range(0, gif.n_frames):
-        gif.seek(frame)  # Go to the specific frame
-        frame_image = gif.convert("RGBA")  # Convert to RGBA for pygame compatibility
-
-        # Rotate the frame 90 degrees counterclockwise
-        rotated_frame = frame_image.rotate(90, expand=True)
-
-        # Convert the frame to a pygame image
-        mode = rotated_frame.mode
-        size = rotated_frame.size
-        data = rotated_frame.tobytes()
-        py_image = pygame.image.fromstring(data, size, mode)
-
-        # Append frame and its duration
-        frames.append(py_image)
-        duration = gif.info.get("duration", 100) / 1000.0  # Duration in seconds
-        frame_durations.append(duration)
-
-    return frames, frame_durations
-
-# Function to play a GIF frame-by-frame on the pygame display
-def play_gif(frames, frame_durations):
-    current_frame = 0  # Start with the first frame
-    last_update_time = pygame.time.get_ticks()  # Time tracking for frame updates
-
-    while current_frame &lt; len(frames):
-        # Handle user events (e.g., quit or escape key)
-        for event in pygame.event.get():
-            if event.type == pygame.QUIT:
-                return False
-            elif event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_ESCAPE:
-                    return False
-
-        now = pygame.time.get_ticks()
-
-        # Check if it's time to update the frame
-        if now - last_update_time &gt; frame_durations[current_frame] * 1000:
-            current_frame += 1
-            last_update_time = now
-
-        if current_frame &lt; len(frames):
-            # Center the frame on the screen and display it
-            frame_rect = frames[current_frame].get_rect(center=(235, 245))
-            screen.blit(frames[current_frame], frame_rect)
-            pygame.display.flip()
-
-        clock.tick(60)  # Limit the loop to 60 frames per second
-
-    return True
-
-# Main loop that handles GIF playback
-running = True
-clock = pygame.time.Clock()  # Clock to control frame rate
-
-try:
-    while running:
-
-        # Randomly select a GIF file based on weights
-        current_gif, _ = random.choices(gif_files, weights=[w for _, w in gif_files], k=1)[0]
-        gif_path = os.path.join("/home/pi", current_gif)  # Path to the selected GIF
-
-        # Load and play the selected GIF
-        frames, frame_durations = load_gif(gif_path)
-        running = play_gif(frames, frame_durations)
-
-except KeyboardInterrupt:
-    # Graceful exit on manual interruption
-    print("Program interrupted")
-
-finally:
-    pygame.quit()</code></pre>
+        </SlideColumns>
 
     </section>
 
     <section>
-        <ul class="text-left">
 
-            <h2>How to build a website</h2>
+        <SlideColumns>
 
-            <li>
-                <Gradient c="orange"><strong>HTML</strong></Gradient> - The building blocks (like digital LEGO pieces)
-            </li>
-            <li>
-                <Gradient c="purple"><strong>CSS</strong></Gradient> - The colors and decorations (makes things pretty!)
-            </li>
-            <li>
-                <Gradient c="yellow"><strong>JavaScript</strong></Gradient> - The magic that makes things move and work
-            </li>
-        </ul>
+            <div class="text-left">
+
+                <h3 class="!normal-case !text-3xl">
+                    How to become a <Gradient c="bluegreen">Software Engineer</Gradient>?
+                </h3>
+
+                <ul class="text-2xl">
+                    <li>Learn to <Gradient c="pink">use computers</Gradinet> at school or at home</li>
+                    <li>Ask your <Gradient c="green">STEM</Gradinet> teacher about coding</li>
+                    <li>Play <Gradient c="red">coding games</Gradient> at home like <a href="https://scratch.mit.edu/" target="_blank">Scratch</a> and <a href="https://www.roblox.com/">Roblox</a></li>
+                    <li>Practice solving problems and being creative</li>
+                    <li>Study <Gradient c="yellow">Math</Gradient> and <Gradient c="yellow">Computer Science</Gradient></li>
+                </ul>
+            </div>
+
+            <Image
+                src={imgNatalia}
+                alt="Natalia"
+                width="400"
+                class="!m-0"
+            />
+
+        </SlideColumns>
+
+    </section>
+
+    <section>
+
+        <h1 class="r-fit-text">
+            What about websites?
+        </h1>
+
+    </section>
+
+    <section>
+
+        <h4 class="!normal-case cursor-pointer select-none" id="slide-title-web-langs">
+            Most websites are built with
+        </h4>
+
+        <SlideColumns>
+
+            <div class="text-left">
+
+                <div data-fragment-lines="1-3">
+
+                    <dt>
+                        <Gradient c="orange"><strong>HTML</strong></Gradient>
+                        <span class="text-xs text-slate-400">(Hypertext Markup Language)</span>
+                    </dt>
+
+                    <dd class="text-2xl mb-7 !ms-0">
+                        The building blocks (like digital LEGO pieces)
+                    </dd>
+
+                </div>
+
+                <div class="opacity-20" data-fragment-lines="5-12">
+
+                    <dt>
+                        <Gradient c="purple"><strong>CSS</strong></Gradient>
+                        <span class="text-xs text-slate-400">(Cascading Style Sheets)</span>
+                    </dt>
+
+                    <dd class="text-2xl mb-7 !ms-0">
+                        The colors and decorations (makes things pretty!)
+                    </dd>
+
+                </div>
+
+                <div class="opacity-20" data-fragment-lines="14-20">
+
+                    <dt>
+                        <Gradient c="green"><strong>JavaScript</strong></Gradient>
+                    </dt>
+
+                    <dd class="text-2xl !ms-0">
+                        The magic that makes things move and work
+                    </dd>
+
+                </div>
+
+            </div>
+
+            <script>
+                import { randomGradient } from '@/scripts/gradients.ts';
+                window.addEventListener('DOMContentLoaded', () => {
+                    document.getElementById('slide-title-web-langs').addEventListener('click', (e) => {
+                        const $element = e.target;
+
+                        $element.className = `animate-jiggle !normal-case cursor-pointer select-none bg-clip-text !text-transparent drop-shadow-sm ${randomGradient()}`;
+
+                        $element.addEventListener('animationend', function handleAnimationEnd() {
+                            $element.classList.remove('animate-jiggle');
+                            $element.removeEventListener('animationend', handleAnimationEnd);
+                        });
+                    });
+                });
+            </script>
+
+            <pre class="sm:!w-1/2 !text-xs/normal"><code data-line-numbers="1-3|5-12|14-20|1-20">{code}</code></pre>
+
+        </SlideColumns>
+
     </section>
 
     <section>
@@ -344,7 +341,7 @@ finally:
         <a href="/">
             <Image
                 src={imgScreenshot}
-                includeShadow={false}
+                hideShadow
                 alt="NataliasDad.com"
                 width="800"
             />
@@ -354,7 +351,7 @@ finally:
 
     <section>
 
-        <h1 class="!normal-case">
+        <h1 class="normal-case">
             But, first...<br />any questions?
         </h1>
 

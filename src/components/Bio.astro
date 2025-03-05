@@ -14,30 +14,33 @@ const {
 } = Astro.props;
 
 const favLabel = 'animal';
+const showBio = !!name && !!emoji && !!color && !!fav;
 ---
-<div
-    class:list={[
-        'relative flex items-center w-fit my-8 md:my-11 py-5 px-3 md:p-5',
-        'odd:ps-26 md:odd:ps-40 even:pe-26 md:even:pe-40 odd:[&_span]:left-1 even:[&_span]:right-1',
-        'odd:text-left even:text-right',
-        'bg-(--color)',
-        'rounded-full shadow-2xl',
-        'before:absolute before:inset-0 before:rounded-full before:shadow-[0.2rem_0.2rem_var(--color-black)]',
-        'ring-2',
-        'cursor-pointer select-none active:scale-90 transition',
-    ]}
-    style={{
-        '--color': color,
-    }}
-    data-confetti={emoji}
->
+{showBio && (
+    <div
+        class:list={[
+            'relative flex items-center w-fit my-8 md:my-11 py-5 px-3 md:p-5',
+            'odd:ps-26 md:odd:ps-40 even:pe-26 md:even:pe-40 odd:[&_span]:left-1 even:[&_span]:right-1',
+            'odd:text-left even:text-right',
+            'bg-(--color)',
+            'rounded-full shadow-2xl',
+            'before:absolute before:inset-0 before:rounded-full before:shadow-[0.2rem_0.2rem_var(--color-black)]',
+            'ring-2',
+            'cursor-pointer select-none active:scale-90 transition',
+        ]}
+        style={{
+            '--color': color,
+        }}
+        data-confetti={emoji}
+    >
 
-    <span class="absolute text-[110px]/[110px] md:text-[150px]/[150px] drop-shadow-md xanimate-wiggle">
-        {emoji}
-    </span>
+        <span class="absolute text-[110px]/[110px] md:text-[150px]/[150px] drop-shadow-md xanimate-wiggle">
+            {emoji}
+        </span>
 
-    <div class="px-5 text-(--color) invert text-sm md:text-xl drop-shadow-md">
-        <strong>{name}</strong>'s favorite {favLabel} is a <strong>{fav}</strong>.
+        <div class="px-5 text-(--color) invert text-sm md:text-xl drop-shadow-md">
+            <strong>{name}</strong>'s favorite {favLabel} is a <strong>{fav}</strong>.
+        </div>
+
     </div>
-
-</div>
+)}

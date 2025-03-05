@@ -9,7 +9,7 @@ interface Props extends ImgAttributes {
 const {
     width,
     class: className = '',
-    includeShadow = true,
+    hideShadow = false,
     ...props
 } = Astro.props;
 
@@ -22,11 +22,10 @@ const imgProps = {
 ---
 
 <AstroImage
-    loading="lazy"
     class:list={[
-        'inline-block w-(--img-width)',
+        'inline-block w-2/3 sm:w-(--img-width)',
         {
-            'rounded-lg shadow-lg': includeShadow,
+            'rounded-lg shadow-lg': !hideShadow,
         },
         className,
     ]}

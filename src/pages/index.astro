@@ -53,20 +53,38 @@ const showStudents = false;
 				Together, they used that information to write code that created what you see below.
 			</p>
 
+			<p class="text-sm">
+				Click or tap each favorite for a fun surprise!
+			</p>
+
 			<div class="flex items-center flex-col">
 
 				<Bio
 					name="John"
 					emoji="😎"
-					color="black"
+					color="aqua"
 					fav="dolphin"
 				/>
 
 				<Bio
 					name="Natalia"
-					emoji="💩"
-					color="pink"
-					fav="monkey"
+					emoji=""
+					color=""
+					fav=""
+				/>
+
+				<Bio
+					name=""
+					emoji=""
+					color=""
+					fav=""
+				/>
+
+				<Bio
+					name=""
+					emoji=""
+					color=""
+					fav=""
 				/>
 
 				{showStudents && students.map(({ name, emoji, fav, color }) => {

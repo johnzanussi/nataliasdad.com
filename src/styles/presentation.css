@@ -1,9 +1,8 @@
 @import "tailwindcss";
-@plugin "daisyui";
 
 @layer components {
     .present {
-        @apply drop-shadow-lg;
+        @apply drop-shadow-lg !pe-[30px];
 
         ul:not(ul *) > li {
             @apply mb-4;
@@ -32,4 +31,15 @@
         display: block;
         float: right;
     }
+
+    .animate-jiggle {
+        animation: jiggle .2s linear 3;
+    }
+
+    @keyframes jiggle {
+        50% {
+            transform: skewY(1deg) skewX(-1deg) scale(1.06);
+        }
+    }
+
 }

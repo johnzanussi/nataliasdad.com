@@ -1,0 +1,97 @@
+<code>import pygame
+    from PIL import Image
+    import random
+    import os
+
+    # Initialize pygame for display and graphics handling
+    pygame.init()
+
+    # Set up a 480x480 window for displaying GIFs
+    screen = pygame.display.set_mode((480, 480))
+
+    # List of GIF files with their respective weights for random selection
+    gif_files = [
+        ("blink.gif", 3),  # More likely to be chosen (weight 3)
+        ("look-left.gif", 1),
+        ("look-right.gif", 1),
+    ]
+
+    # Function to load and process a GIF file into pygame-compatible frames
+    def load_gif(gif_path):
+        gif = Image.open(gif_path)  # Open the GIF file
+        frames = []  # List to store individual frames
+        frame_durations = []  # List to store frame durations
+
+        # Extract and process each frame
+        for frame in range(0, gif.n_frames):
+            gif.seek(frame)  # Go to the specific frame
+            frame_image = gif.convert("RGBA")  # Convert to RGBA for pygame compatibility
+
+            # Rotate the frame 90 degrees counterclockwise
+            rotated_frame = frame_image.rotate(90, expand=True)
+
+            # Convert the frame to a pygame image
+            mode = rotated_frame.mode
+            size = rotated_frame.size
+            data = rotated_frame.tobytes()
+            py_image = pygame.image.fromstring(data, size, mode)
+
+            # Append frame and its duration
+            frames.append(py_image)
+            duration = gif.info.get("duration", 100) / 1000.0  # Duration in seconds
+            frame_durations.append(duration)
+
+        return frames, frame_durations
+
+    # Function to play a GIF frame-by-frame on the pygame display
+    def play_gif(frames, frame_durations):
+        current_frame = 0  # Start with the first frame
+        last_update_time = pygame.time.get_ticks()  # Time tracking for frame updates
+
+        while current_frame &lt; len(frames):
+            # Handle user events (e.g., quit or escape key)
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    return False
+                elif event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_ESCAPE:
+                        return False
+
+            now = pygame.time.get_ticks()
+
+            # Check if it's time to update the frame
+            if now - last_update_time &gt; frame_durations[current_frame] * 1000:
+                current_frame += 1
+                last_update_time = now
+
+            if current_frame &lt; len(frames):
+                # Center the frame on the screen and display it
+                frame_rect = frames[current_frame].get_rect(center=(235, 245))
+                screen.blit(frames[current_frame], frame_rect)
+                pygame.display.flip()
+
+            clock.tick(60)  # Limit the loop to 60 frames per second
+
+        return True
+
+    # Main loop that handles GIF playback
+    running = True
+    clock = pygame.time.Clock()  # Clock to control frame rate
+
+    try:
+        while running:
+
+            # Randomly select a GIF file based on weights
+            current_gif, _ = random.choices(gif_files, weights=[w for _, w in gif_files], k=1)[0]
+            gif_path = os.path.join("/home/pi", current_gif)  # Path to the selected GIF
+
+            # Load and play the selected GIF
+            frames, frame_durations = load_gif(gif_path)
+            running = play_gif(frames, frame_durations)
+
+    except KeyboardInterrupt:
+        # Graceful exit on manual interruption
+        print("Program interrupted")
+
+    finally:
+        pygame.quit()</code>
