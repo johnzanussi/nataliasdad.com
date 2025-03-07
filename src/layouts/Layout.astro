@@ -8,7 +8,6 @@ type Props = {
 
 const BASE_TITLE = 'Natalia\'s Dad';
 
-// import '@/styles/index.css';
 import imgCover from '@/assets/website-nataliasdad.png';
 
 const { title, bgProps } = Astro.props;
@@ -20,7 +19,7 @@ const pageTitle = title ? `${title} - ${BASE_TITLE}` : BASE_TITLE;
 	<head>
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<title>{pageTitle}</title>
 		<meta property="og:title" content="Natalia's Dad">
