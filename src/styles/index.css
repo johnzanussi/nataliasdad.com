@@ -1,6 +1,14 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
+@custom-variant is-hover {
+    @media (hover: hover) {
+        @slot;
+    }
+}
+
+/* @custom-variant is-hover (@media (hover:hover)); */
+
 @property --offset {
     syntax: '<length>';
     inherits: false;
