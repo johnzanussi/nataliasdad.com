@@ -3,18 +3,17 @@ type Props = {
     name: string;
     emoji: string;
     color: string;
-    fav: string;
+    animal: string;
 };
 
 const {
     name,
     emoji,
     color,
-    fav,
+    animal,
 } = Astro.props;
 
-const favLabel = 'animal';
-const showBio = !!name && !!emoji && !!color && !!fav;
+const showBio = !!name && !!emoji && !!color && !!animal;
 ---
 {showBio && (
     <div
@@ -39,7 +38,7 @@ const showBio = !!name && !!emoji && !!color && !!fav;
         </span>
 
         <div class="px-5 text-(--color) invert text-sm md:text-xl drop-shadow-md">
-            <strong>{name}</strong>'s favorite {favLabel} is a <strong>{fav}</strong>.
+            <strong>{name}</strong>'s favorite animal is a <strong>{animal}</strong>
         </div>
 
     </div>

@@ -5,15 +5,7 @@ import Tooltip from '@/components/Tooltip.astro';
 import E from '@/components/Emoji.astro';
 import Gradient from '@/components/TextGradient.astro';
 
-import students from '@/data/students.json';
-
 import '@/styles/index.css';
-
-const fav = {
-	label: 'animal',
-	emoji: '🐒',
-};
-const showStudents = false;
 ---
 
 <Layout
@@ -45,7 +37,7 @@ const showStudents = false;
 			<p>You can view the presentation <a href="/presentation">by clicking here</a>.</p>
 
 			<p>
-				After learning about his job, each student shared their favorite <E>🎨</E>&nbsp;<Gradient c="purple">color</Gradient>, <E>😎</E>&nbsp;<Gradient c="orange">emoji</Gradient>, and <E>{fav.emoji}</E>&nbsp;<Gradient c="red">{fav.label}</Gradient>.</p>
+				After learning about his job, each student shared their favorite <E>🎨</E>&nbsp;<Gradient c="purple">color</Gradient>, <E>😎</E>&nbsp;<Gradient c="orange">emoji</Gradient>, and <E>🐒</E>&nbsp;<Gradient c="red">animal</Gradient>.</p>
 			</p>
 
 			<p>
@@ -59,158 +51,144 @@ const showStudents = false;
 			<div class="flex items-center flex-col">
 
 				<Bio
-					name="John"
+					name="natalia's dad"
 					emoji="😎"
 					color="aqua"
-					fav="dolphin"
+					animal="dolphin"
 				/>
 
 				<Bio
 					name="natalia"
 					emoji="🍟"
-					color="blue"
-					fav="dolphin"
+					color="deepskyblue"
+					animal="dolphin"
 				/>
 
 				<Bio
-					name="anna.c"
+					name="anna c."
 					emoji="😇"
 					color="orange"
-					fav="dog"
+					animal="dog"
 				/>
 
 				<Bio
 					name="capri"
 					emoji="🐥"
-					color="teal"
-					fav="puppy"
+					color="turquoise"
+					animal="puppy"
 				/>
 
 				<Bio
 					name="henry"
 					emoji="🐊"
 					color="green"
-					fav="snow leaperd"
+					animal="snow leaperd"
 				/>
 
 				<Bio
 					name="cameron"
 					emoji="🐒"
-					color="teal"
-					fav="cheeta"
+					color="turquoise"
+					animal="cheeta"
 				/>
 
 				<Bio
 					name="maria"
 					emoji="🍱"
-					color="teal"
-					fav="dog"
+					color="turquoise"
+					animal="dog"
 				/>
 
 				<Bio
 					name="alessio"
 					emoji="🦾"
 					color="blue"
-					fav="snow lepard"
+					animal="snow lepard"
 				/>
 
 				<Bio
 					name="anna n"
 					emoji="🐣"
 					color="lightblue"
-					fav="red panda"
+					animal="red panda"
 				/>
 
 				<Bio
 					name="Liam"
 					emoji="🐦‍🔥"
 					color="gold"
-					fav="geko"
+					animal="geko"
 				/>
 
 				<Bio
 					name="kristina"
 					emoji="🦢"
 					color="violet"
-					fav="puppy"
+					animal="puppy"
 				/>
 
 				<Bio
 					name="geovana"
 					emoji="🏀"
 					color="pink"
-					fav="cat"
+					animal="cat"
 				/>
 
 				<Bio
 					name="christopher"
 					emoji="🥷"
 					color="blue"
-					fav="tiger"
+					animal="tiger"
 				/>
 
 				<Bio
 					name="riley"
 					emoji="😞"
 					color="limegreen"
-					fav="redpanda"
+					animal="redpanda"
 				/>
 
 				<Bio
 					name="thomas"
 					emoji="🏉"
 					color="blue"
-					fav="snake"
+					animal="snake"
 				/>
 
 				<Bio
 					name="jade"
 					emoji="❤️"
-					color="teal"
-					fav="pig"
+					color="turquoise"
+					animal="pig"
 				/>
 
 				<Bio
 					name="alexandra"
 					emoji="💗"
 					color="purple"
-					fav="dolphin"
+					animal="dolphin"
 				/>
 
 				<Bio
 					name="nick"
 					emoji="🇺🇸"
 					color="lightblue"
-					fav="elk"
+					animal="elk"
 				/>
 
 				<Bio
 					name="camden"
 					emoji="🥹"
 					color="blue"
-					fav="kingfisher"
+					animal="kingfisher"
 				/>
 
 				<Bio
-					name="mrs caracciola"
+					name="mrs. caracciola"
 					emoji="☺️"
 					color="black"
-					fav="pig"
+					animal="pig"
 				/>
-
-
-
-
-				{showStudents && students.map(({ name, emoji, fav, color }) => {
-					return (
-						<Bio
-							name={name}
-							emoji={emoji}
-							fav={fav}
-							color={color}
-						/>
-					);
-				})}
 
 			</div>
 
