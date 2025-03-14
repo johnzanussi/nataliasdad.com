@@ -13,7 +13,7 @@ import imgPumpkin from '@/assets/minions-pumpkin.png';
 import imgNatalia from '@/assets/img-natalia-typing.jpg';
 import imgDogGif from '@/assets/gif-dog-typing.gif';
 import imgScreenshot from '@/assets/screenshot-nataliasdad.png';
-import imgRpi from '@/assets/electronic-connections.jpg';
+import imgRpi from '@/assets/img-minion-setup.jpg';
 
 const code = `<h4 class="font-bold text-white" id="title">
     Most websites are built with
@@ -163,15 +163,20 @@ document
 
         <SlideColumns>
 
-            <img src={imgDogGif.src} width="450" class="rounded-lg shadow-lg" />
+            <Image
+                src={imgDogGif}
+                width="450"
+                class="rounded-lg shadow-lg"
+                alt="dog"
+            />
 
             <div class="text-left">
 
-                <h3 class="!normal-case !text-4xl">
+                <h3 class="!normal-case !text-6xl sm:!text-4xl">
                     Why do I love my job?
                 </h3>
 
-                <ul class="text-2xl">
+                <ul class="text-5xl md:text-2xl">
                     <li>I get to be <Gradient c="red">creative</Gradient> every day</li>
                     <li>I'm always learning <Gradient c="blue">something new</Gradient></li>
                     <li>I <Gradient c="green">solve problems</Gradient></li>
@@ -179,8 +184,6 @@ document
                     <li>I can use what I learn at work for <Gradient c="yellow">fun stuff</Gradinet> at home. Like....</li>
                 </ul>
             </div>
-
-
 
         </SlideColumns>
 
@@ -202,7 +205,7 @@ document
 
     <section>
 
-        <p class="text-4xl">
+        <p class="text-6xl sm:text-4xl">
             I did that by writing <Code /> and running it on a small computer called a <Gradient c="red">Raspberry Pi</Gradient> with a small round screen
         </p>
 
@@ -216,7 +219,6 @@ document
                 src={imgRpi}
                 alt="Raspberry Pi"
                 width="450"
-                hideShadow
                 class="sm:object-contain"
             />
 
@@ -228,13 +230,13 @@ document
 
         <SlideColumns>
 
-            <div class="text-left">
+            <div class="sm:text-left">
 
-                <h3 class="!normal-case !text-3xl">
+                <h3 class="!normal-case text-7xl sm:!text-3xl">
                     How to become a <Gradient c="bluegreen">Software Engineer</Gradient>?
                 </h3>
 
-                <ul class="text-2xl">
+                <ul class="text-5xl sm:text-2xl">
                     <li>Learn to <Gradient c="pink">use computers</Gradinet> at school or at home</li>
                     <li>Ask your <Gradient c="green">STEM</Gradinet> teacher about coding</li>
                     <li>Play <Gradient c="red">coding games</Gradient> at home like <a href="https://scratch.mit.edu/" target="_blank">Scratch</a> and <a href="https://www.roblox.com/">Roblox</a></li>
@@ -293,7 +295,7 @@ document
                     </dt>
 
                     <dd class="text-2xl mb-7 !ms-0">
-                        The colors and decorations (makes things pretty!)
+                        The position, color, and size of things
                     </dd>
 
                 </div>
@@ -315,8 +317,8 @@ document
             <script>
                 import { randomGradient } from '@/scripts/gradients.ts';
                 window.addEventListener('DOMContentLoaded', () => {
-                    document.getElementById('slide-title-web-langs').addEventListener('click', (e) => {
-                        const $element = e.target;
+                    document.getElementById('slide-title-web-langs')?.addEventListener('click', (e) => {
+                        const $element = e.target as HTMLElement;
 
                         $element.className = `animate-jiggle !normal-case cursor-pointer select-none bg-clip-text !text-transparent drop-shadow-sm ${randomGradient()}`;
 

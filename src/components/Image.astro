@@ -2,7 +2,7 @@
 import { Image as AstroImage, type ImgAttributes } from 'astro:assets';
 
 interface Props extends ImgAttributes {
-    width: number;
+    width: string;
     hideShadow?: boolean;
 };
 
@@ -14,7 +14,7 @@ const {
 } = Astro.props;
 
 const imgProps = {
-    width: width * 2,
+    width: parseInt(width) * 2,
     style: {
         '--img-width': `${width}px`,
     },
@@ -24,7 +24,7 @@ const imgProps = {
 
 <AstroImage
     class:list={[
-        'inline-block w-2/3 sm:w-(--img-width)',
+        'inline-block w-full sm:w-(--img-width)',
         {
             'rounded-lg shadow-lg': !hideShadow,
         },
