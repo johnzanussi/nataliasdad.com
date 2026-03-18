@@ -2,8 +2,8 @@
 
 A website and presentation I built for my daughter’s second-grade class’s Career Week.
 
-* [nataliasdad.com](https://nataliasdad.com/presentation)
-* [nataliasdad.com/presentation](https://nataliasdad.com/presentation)
+* [nataliasdad.com](https://nataliasdad.vercel.app/)
+* [nataliasdad.com/presentation](https://nataliasdad.vercel.app/presentation)
 
 ![screenshot](src/assets/screenshot-nataliasdad.png)
 
